@@ -1,0 +1,107 @@
+\section{Лекция 1}
+
+Повторение определений из мат. анализа: окрестность точки, открытое множество, замкнутое  множество, непрерывная функция, компакт, связность, метрическое пространство. Так же было отмечено, что топлогию можно задать через систему окрестностей.
+
+\begin{nota_bene}
+    $\rho(x,y) = \abs{x - y}$ - метрика, при $x,y \in \R^1$.
+\end{nota_bene}
+
+\begin{definition}
+    Пара $(X, \rho)$ называется метрическим пространство, если $\rho: X \times X \leftarrow \R_{\geq 0}$ удовлетворяет аксиомам метрики. 
+\end{definition}
+
+\begin{theorem}
+    $\br{\R^1 , \rho = \abs{x - y}}$ является метрическим пространством.
+\end{theorem}
+
+\begin{definition}
+    Топологическое пространство $\br{X, \tau}$, где $\tau$ - совокупность подмножеств - тополгия, удовлетвояряющие следуюущим свойствам
+    \begin{enumerate}
+        \item $\emptyset \in \tau$
+        \item $X \in \tau$
+        \item $\bigcap_{i = 1}^{k}U_k \in \tau$
+        \item $\bigcup U_k \in \tau$
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item антидискретная(тривиальная) топология $\tau = \cbr{\emptyset, X}$
+        \item дискретная топология $\tau = 2^X$
+        \item $X = \cbr{1, 2}$, способы задания топологии: $\tau_1 = \cbr{X, \emptyset, \cbr{1}}$, $\tau_1 = \cbr{X, \emptyset, \cbr{2}}$
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    Пусть $X$ - метрическое пространство. Открытый шар $O_r (x_0) = \cbr{x \in X \ | \ \rho(x, x_0) < r}$
+\end{definition}
+
+\begin{definition}
+    Пусть $X$ - метрическое пространство. $U \subset X$ - открыто, если $\forall x \in U \ \exists$ окрестность точки(=открытый шар, содержащий $x$) $x$, содержащаяся в $U$. 
+\end{definition}
+
+\begin{definition}
+    В $X$ произвольном топологическом пространстве $U \subset X$ является замкнутым, если дополнение к нему открыто.
+\end{definition}
+
+\begin{example}
+    Топология Зарисского определяется в $\C^1$, можно обобщить до $\C^n$. - что-то из алгебраическое геомерии.
+
+    Замкнутое множество - это конечное множество точек.
+\end{example}
+\begin{exercise}
+    Доказать, что это топология.
+\end{exercise}
+
+\begin{definition}
+    База топологии $\beta \subset \tau \subset 2^X$ - любое открытое подмножество $U \in \tau$ можно выразить в виде определения элементов из базы $\beta$, т.е. $U = \bigcap_{\alpha \in A} B_{\alpha}$, где $B_{\alpha}$ является элементом базы.
+\end{definition}
+
+База топологии необходима для уменьшения количестав задаваемых открытых множеств для определения топологии.
+
+% TODO: дописать доказательство
+\wip
+\begin{lemma}[Достаточное условие на базу топологии]
+    $\beta \subset 2^x$ - набор подмножеств. Если выполняются следующие условия
+    \begin{enumerate}
+        \item $\forall x \in X \exists B_x \in \beta$ такое, что $x \in B_x$.
+        \item $\forall B_1, B_2 \in \beta \Rightarrow (x \in B_1 \cap B_2 \Rightarrow \exists B_3 \in \beta : B_3 \subset B_1 \cup B_2)$ 
+    \end{enumerate}
+    то $\beta$ является базой топлогии.
+\end{lemma}
+\begin{proof}
+    Вводим всевозможные $U_{\alpha} = \bigcup_{\gamma} B_{\gamma}^{\alpha}$. Проверим все свойства из опредления топологии.
+
+    Добавим в топологию $\emptyset, X$ для выполнения первый 2-ух свойств.
+\end{proof}
+
+\begin{exercise}
+    Повторить доказательство для базы метрического пространства.
+\end{exercise}
+
+Можно еще уменьшить количество задаваемых элементов.
+
+\begin{definition}
+    $\pi$ называется предбазов топологии, если $\pi \subset \beta \subset \tau \subset 2^X$ и каждое $U$ представляется в виде объединения конечного пересечения элементов = множество всех подмножеств предбазы.
+\end{definition}
+
+\begin{nota_bene}
+    Любое множество задает предбазу.
+\end{nota_bene}
+
+\wip
+\begin{example}
+    Пусть $X = {1,2,3,4,5}$.
+
+    $\pi = \{\{1,2,3\}, \{2,3,4\}, \{3,4,5\}\}$ - предбаза.
+
+    $\beta = \{\{1,2,3\}, \{2,3,4\}, \{3,4,5\}, \{2,3\}, \{3,4\}, \{3\}, \{1,2,3,4\}, \{2,3,4,5\}, \{\textbf{что-то}\}, \emptyset\}$
+
+    $\tau = \{\ldots, \ldots\}$
+
+    Причем $\pi \subset \beta \subset \tau \subset 2^X$
+\end{example}
+
+\begin{definition}
+    $f: X \rightarrow Y$ - непрерывная функция, если для каждого открытого $U \subset Y$ выполняется $f^{-1}(U)$ - открыто в $X$.
+\end{definition}
