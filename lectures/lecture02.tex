@@ -1,0 +1,206 @@
+\section{Лекция 2}
+
+Литература:
+\begin{enumerate}
+    \item В.В. Федорчук - Введение в топологию
+    \item 4 автора - Введение в топоплогию
+\end{enumerate}
+
+\begin{definition}
+    Пусть $(X, \rho)$ - метрическое пространство. Из метрического можно построить топологические пространство $(X, \tau)$.
+    Такие пространства называеются метризуемыми.
+\end{definition}
+
+\begin{nota_bene}[Критерий метризуемости. Накаты Ю.М.Смирнова. 1950-1951]
+\end{nota_bene}
+
+\begin{definition}
+    $O_{\varepsilon}(x_0) = \cbr{x\in X : \rho(x, x_0) < \varepsilon}$
+\end{definition}
+
+\begin{theorem}
+    Шары $O_{\varepsilon}(x)$ образуют базу топологии.
+\end{theorem}
+\begin{proof}
+    1. $\forall x \in X \ \exists \ O_{\varepsilon}(x) : x \in O_{\varepsilon}(x)$
+
+    2. рассмторим $(O_{\varepsilon_1}(x_1) = B_1) \cap (B_2 = O_{\varepsilon_2}(x_2))$ найдем окрестность точки $x$, лежащий в этом пересечении, чтобы вся окрестность тоже лежала в этом пересечении
+    $\rho(x, x_1) < \varepsilon_1, \rho(x, x_2) < \varepsilon_2$. Пусть $\varepsilon = \min\cbr{\varepsilon_1 - \rho(x_1, x), \varepsilon_2 - \rho(x_2, x)}$
+    Проверим условие $O_{\varepsilon} \subset O_{\varepsilon_1}(x_1) \cap O_{\varepsilon_w}(x_2)$
+    % todo: вставить картинку
+
+    Проверим $y \in O_{\varepsilon_1}(x_1) \Rightarrow \rho(y, x_1) < \varepsilon_1$.
+    \[
+        \rho(y, x_1) \leq \rho(y, x) + \rho(x, x_1) < \varepsilon - \rho(x, x_1) + \rho(x, x_1) = \varepsilon
+    \]
+    Аналогично для второго шара.
+
+    Т.о. по достаточному условию на базу открытые шары будет образовывать базу.
+\end{proof}
+
+Простой способ сравнения топологий. Пусть $X$ - множество. $\tau_1, \tau_2$ - топологии, определенные на $X$.
+ЧУМ - частично упорядоченное множество.
+\begin{definition}
+    $\tau_1 \leq \tau_2 \Leftrightarrow \tau_1 \subset \tau_2$
+\end{definition}
+Обычными словами: любое открытое множество в $\tau_1$ будет открытым в $\tau_2$.
+
+\begin{example}
+    Рассмотрим антидискретную и дискретную топологии. 
+    \[
+        \tau_1 = \cbr{\emptyset, X} \subset \tau_2 = 2^{X}
+    \]
+    Можно считать, что это два полюса сравнения, где слева - слабейшая, справа - сильнейшая.  
+
+    Любую топологию можно сравнить с этими двумя.
+    Но точно существуют не сравнимые.
+\end{example}
+
+\begin{exercise}
+    Метризумые ли тривиальные топлогии(= антидискретная и дискретная)?
+
+    1. можнов ввести дискретную метрику $\rho_{D}(x, y) = (1, x = y; 0, x \neq y)$. Получим дискретную топологию.
+
+    2. неметризуемо.
+\end{exercise}
+
+\begin{definition}[индуцированная топология подространства]
+    Пусть $(X, \tau)$ - топологическое пространство, $Y \subset X$. $\tau_{Y} = \cbr{U \cap Y : U \in \tau}$.
+\end{definition}
+\begin{proof}
+    Очевидно, что выполняются аксиомы топологии.
+\end{proof}
+
+
+\begin{example}
+    $\R^2 = X$ - метрическое пространство, $Y \subset X$. 
+    % todo: вставить картинку 
+\end{example}
+
+\begin{definition}
+    $U$ - окрестность точки $x \in X$ = $U \in \tau$ такое, что $x \in U$. 
+\end{definition}
+
+\begin{nota_bene}[Есть тут глубокий смысл?]
+    \[
+        \bigcap_{i = 1}^{n} \text{окрестность точки } x = \text{окрестность точки x}
+    \]
+
+    \[
+        \bigcup_{\alpha} \text{окрестность } x = \text{окрестность}
+    \]
+\end{nota_bene}
+
+\begin{statement}
+    $A \subset X$ - открыто $\Leftrightarrow$ для каждой точки $x \in$ сущесвтует ее окрестность, лежащая в $A$.
+\end{statement}
+\begin{proof}
+    % todo: вставить картинку
+    
+    $\br{\Leftarrow}$: Рассмоторим $C = \bigcup_{x \in A} O(x) \in \tau$.
+    Очевидно, что $A \subset C$. А т.к. для каждого $x \in A$ верно $O(x) \subset A$, то также выполняется включение в другую сторону.
+
+    $\br{\Rightarrow}$: раз $A$ - открыто, то $A$ является окрестностью.
+\end{proof}
+
+\begin{definition}
+    Пусть $x \in X$, $\cbr{x} \in \tau$, то $x$ называется изолированной точкой.
+\end{definition}
+
+\begin{nota_bene}
+    Если топлопгия дискретная, то все точки изолированные.
+\end{nota_bene}
+
+\begin{definition}
+    Пусть $A \subset X$, $x \in X$. $x$ - точка прикосновения множества $A$, если для любой окрестности $O(x)$ выполняется $O(x) \cap A \neq \emptyset$. 
+\end{definition}
+
+\begin{definition}
+    $x \in A$ - внутрення точка множества $A$, если существует $O(x)$: $O(x) \subset A$.
+\end{definition}
+
+\begin{definition}[A1]
+    Замыкание множества $A$ - множество всех точек прикосновения $A$.
+    Обозначается $\overline{A}$.
+\end{definition}
+
+
+% todo: добавить оператор \Int, дописать определения
+\begin{definition}[B1]
+    Внутренность - множество всех внутренних точек.
+    Обозначается $Int(A)$.
+\end{definition}
+
+\begin{exercise}
+    $Int(A) \subset A \subset \overline{A}$
+\end{exercise}
+
+\begin{definition}[A2]
+    $\overline{A} = \bigcap_{\text{по всем возможным } F} = {F : 1. F - \text{замкнуто}}, 2. A \subset F$
+    $\overline{A}$ = наименьшее замкнутое множество, содержащее $A$.
+
+\end{definition}
+
+\begin{definition}[B2]
+    $Int(A) = \bigcup_{\text{по всем U}} U : U \in \tau, U \subset A$
+    $Int(A)$ = наибольшее открытое в $A$.
+\end{definition}
+
+
+todo: 
+\begin{definition}
+    $x \in X$ - граничная точка $A$, если $x$ - точка прикосновения и $x \notin Int(A)$.  
+
+    Граница - множество граничных точек.
+    Обозначается $Bd(A)$.
+\end{definition}
+
+\begin{nota_bene}
+    \[
+        Bd(A) = \overline{A} \setminus Int(A)
+    \]
+\end{nota_bene}
+
+\begin{theorem}
+    Это определния эквивалентны.
+\end{theorem}
+\begin{proof}
+    Докажем эквивалентность определний B1 и B2.
+
+    Пусть $Int(A)$ - множество точек в смысле определения B1. Докажем B2.
+    Докажем проверкой включений.
+
+    $(\subseteq)$: если $x \in A$ - внутрення точка, то существует $O(x) \subset A$, тогда $x \in Int(A)$ в смыле другого определения.
+
+    $(\supseteq)$: $x \in Int(A)$ в смысле определния B2, тогда $x$ принадлежит каком-то одному открытому $V \subset A$, тогда можем взять $V$ за окрестность точки $x$.
+\end{proof}
+
+% todo: добавить картинку
+\begin{definition}[понятие непрерывного отображения]
+    Пусть $f: X \rightarrow Y$. $f$ непрерывно в точке $x_0 \in X$, если для каждой $O(f(x_0))$ существует такая окрестность $O(x_0)$, что $f(O(x_0)) \subset O(f(x_0))$. 
+
+    $f$ - непрервыное отображение топологических пространств, если оно непрервыно во всех $x \in X$.
+\end{definition}
+
+% todo: дописать доказательство
+\begin{statement}
+    Следующие условия эквивалентны:
+    \begin{enumerate}
+        \item $f$ - непрерывно
+        \item прообраз любого открытого множества является открытым, т.е. $U \in \tau_{X} \Rightarrow f^{-1}(U) \in \tau_{Y}$
+        \item прообраз любого замкнутого замкнут
+        \item $f(\overline{A}) = \overline{f(A)}$ 
+    \end{enumerate}
+\end{statement}
+\begin{proof}
+    Докажем только $(1) \Leftrightarrow (2)$.
+
+    $(\Rightarrow)$: пусть $f$ - непрерывно. Нужно доказать, что $f^{-1}(V)$ - открыто, можем воспользоваться утвержеднием при критерий открытости.
+
+
+    $(\Leftarrow)$: пусть $x \in X$, $V$ - окрестность точки $f(x_0)$, тогда по предположению $f^{-1}(V)$ - открыто, следовательно существует $O(x) \subset f^{-1}(V)$
+\end{proof}
+
+\begin{exercise}
+    Доказать остальные эквивалентности в утверждении выше.
+\end{exercise}
