@@ -1,0 +1,112 @@
+\section{Лекция 6}
+
+На прошлой лекции была доказано теорема
+\begin{theorem}
+    Метрическое пространство является нормальным, то есть удовлетворяет аксиомам $T4 + T1$.
+\end{theorem}
+
+Вопрос: что нужно добавить для нормального пространства, чтобы оно стало метризуемым?
+
+\paragraph{Функциональная отделимость}
+
+% \begin{definition}[функциональная отделимость]
+    
+% \end{definition}
+
+\begin{definition}
+    $A \subset X$ - всюду плотно в $X$, если $\overline{A} = X$.
+\end{definition}
+
+\begin{theorem}[Лемма Урасона]
+    Пусть $X$ - нормальное пространство. $A, B$ - два замкнутых непересекающихся подмножества $X$. Тогда существуеют непрерывная функция $F: X \rightarrow [0, 1] \subset \R$, такая, что $F(A) = \cbr{0}$ и $F(B) = \cbr{1}$
+% todo: вставить картинку про ступенки
+\end{theorem}
+\begin{proof}
+    Для доказательства этой леммы будет использовать двоично-рациональные числа, это
+    \[
+        S = \cbr{q = \frac{m}{2^n}, m \in \Z, n \in \N}
+    \]
+    % todo: добавить картинку для изображения дробно рациональных чисел на [0, 1]
+
+    Стандартное доказательство: 
+        
+        Будем строить по индукции семейство открытых множеств $\cbr{U}$, которые мы заиндексируем двоично-рациональными числа из $[0, 1]$.
+        
+            1. $U_1 = X \subset B$
+            
+            2. $U_0$ должно быть следующим $A \subset U_0 \subset \overline{U}_0 \textbf{ (используем нормальность) } \subset U_1$
+
+            3. $U_{\frac{1}{2}}$ должно выполняться $\overline{U}_0 \subset U_{\frac{1}{2}} \subset \overline{U}_{\frac{1}{2}} \subset U_1$, cуществование такого множества следует из нормальности, примененной к дополнениям $U_0$ и $U_1$.
+
+            4. $U_{\frac{1}{4}}:$ $\overline{U}_0 \subset U_{\frac{1}{4}} \subset \overline{U}_{\frac{1}{4}} \subset U_{\frac{1}{2}}$ и $U_{\frac{3}{4}}:$ $\overline{U}_\frac{1}{2} \subset U_{\frac{3}{4}} \subset \overline{U}_{\frac{3}{4}} \subset U_{1}$
+
+            5. индуктивный переход. Берем $q = \frac{2k + 1}{2^n}$. Рассмотрим соседние c $q$ столбики - они будут иметь вид $\frac{k}{2^{n - 1}}$ и $\frac{k + 1}{2^{n - 1}}$.
+            \[
+                \overline{U}_{\frac{k}{2^{n - 1}}} \subset U_q \subset \overline{U}_q \subset U_{\frac{k + 1}{2^{n - 1}}}
+            \]
+
+        Пострили системс открытых множеств. Это система множеств $\cbr{U_q}$ обладает свойством упорядоченности, т.е. если $q < r \in S$, то $\overline{U}_q \subset U_r$. Теперь определим функцию $F$.
+
+        % todo: добавить оператор inf
+
+        \[
+            F(x) = 
+                \begin{cases}
+                    \inf\cbr{q : x \in U_q}, & x \notin B \\
+                    1, & x \in B
+                \end{cases}
+        \]
+
+        Очевидно выполнение требований для множеств $A$ и $B$.
+        Проверим непрерывность. Достаточно проверить, что $F^{-1}(O_\alpha)$ - открыт, где $O_\alpha$ - элемент базы топологии отрезка. Можно это доказать только для $[0, a), (b, 0]$, т.к. остальные элементы топологии можно получить из этих двух.
+
+            Рассмотрим $x \in F^{-1}([0, a)) \Leftrightarrow F(x) < a  \Leftrightarrow \inf\cbr{q : x \in U_q} < a \Leftrightarrow \exists \widetilde{q} < a$, тогда $F^{-1}([0, a)) = \bigcup_{\widetilde{q} < a} U_{\widetilde{q}}$ - открыто.
+
+            Рассмотрим $F$, заданную другим образом 
+            \[
+                F(x) = 
+                    \begin{cases}
+                        \sup\cbr{r : x \notin U_r}, & x \notin B \\
+                        1, & x \in B
+                    \end{cases}
+            \]
+            $\sup\cbr{r : x \notin U_r} = \sup\cbr{r : x \notin \overline{U}_r} = \sup\cbr{r : x \in X \setminus \overline{U}_r - \text{ это множество открыто}}$
+            Далее аналогично первому случаю.
+            
+    Иллюстрация:
+    % todo:
+\end{proof}
+
+\begin{example}[Нормального, но не метризуемого пространства]
+    
+\end{example}
+
+\paragraph{Взаимоотношение компактности и нормальности}
+
+\begin{nota_bene}[характеризация хаусдорфово пространства]
+    Пусть $X$ - хаусдорфово $\Leftrightarrow$ для каждых $x \neq y$ существует $O(x) : y \notin \overline{O}(x) $
+\end{nota_bene}
+\begin{proof}
+    ($\Leftarrow$): $y \notin \overline{O}(x) \Leftrightarrow y \in X \setminus \overline{O}(x)$ - открыто, тогда существует окрестность $O(y)$: $O(y) \cap \overline{O}(x) = \emptyset$, тогда $O(y) \cap \overline{O}(x) = \emptyset$.
+
+    % todo:
+    ($\Rightarrow$): от противного 
+\end{proof}
+
+\begin{statement}
+    Замкнутое подмножество компакта - компактно
+\end{statement}
+\begin{proof}
+    Очевидно.
+\end{proof}
+
+\begin{lemma}
+    В хаусдорфовом топологическом пространстве $X$ компактное подмножество $F$ является замкнутым.
+\end{lemma}
+\begin{proof}
+    Очевидно.
+\end{proof}
+
+\begin{exercise}
+    $\overline{A \cup B} = \overline{A} \cup \overline{B}$
+\end{exercise}
