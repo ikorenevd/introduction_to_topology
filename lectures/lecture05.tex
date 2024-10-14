@@ -1,0 +1,84 @@
+\section{Лекция 5}
+
+
+Рассмотрим полезную характеристику $T_1$-пространства: 
+
+\begin{statement}
+    $X$ является $T_1$-пространством тогда и только тогда, когда для любых $x$ множество $\{x\}$ замкнуто.      
+\end{statement}
+\begin{proof}
+    $(\Rightarrow):\ $ Пусть $T_1$. Если возьмем $y \neq x$, тогда существует $O(x)$ и $O(y)$, т.ч. $y \not\in O(x)$ и $x \not\in O(y) \Longrightarrow y$ не является точкой прикосновения множества $X$. Значит $X\backslash \{x\}$ множество не содержащее предельную точку. Таким образом $x$ единственная предельная (прикосновенная) точка множества $X$.
+
+    $(\Leftarrow):\ $ Пусть различные точки $\{x\}$ и $\{y\}$ замкнуты, тогда $X\backslash \{x\}$ и $Y\backslash \{y\}$ открыты. Данные множества открыты, возьмем их в качестве окрестностей: $y \in X\backslash\{x\}$, $x \backslash\{y\}$ 
+\end{proof}
+
+\begin{statement}
+    Вообще говоря из $T_3$ не следует $T_0$.  
+\end{statement}
+\begin{proof}
+    Приведем контрпример: пусть $X = \{x, y\}$ и $\tau = \{\varnothing, X\}$. Возмем точку $x$, тогда замкнутое подмножечство $F \subset X$, не содержащее $x$, только пустое; $x \in X$, $\varnothing \in \varnothing$  
+\end{proof}
+
+\begin{definition}
+    Пространство $X$ регулярно, если оно $T_3$ и $T_0$   
+\end{definition}
+
+\begin{statement}
+    $T_3$ и $T_1 \Rightarrow T_2$
+\end{statement}
+\begin{proof}
+    Возьмем $x$ и $y$, такие что $x \neq y$. Пусть существует $O(x)$: $y \not\in O(x)$. Рассмотрим $X\backslash O(x) =: F$, оно замкнуто и $y \in F$. По аксиоме $T_3$ существуют окрестности $O(x)$ и $O(F)$: $O(x) \cap O(F) = \varnothing$. Найдем окрестность точки $y$. Существует $O(y) \subset O(F)$, так как $y \in O(F)$ и $O(F)$ открыто. Таким образом $O(x) \cap O(y) = \varnothing$.
+\end{proof}
+
+\begin{example}
+    Если $X$ метрическое пространство, то $X$ хаусдорфово.
+\end{example}
+
+$\newline$ 
+Рассмотрим полезную характеристику пространства $T_2$.
+\begin{statement}
+    $X$ пространство $T_2$ $\Leftrightarrow \forall x \in X$ $\ \bigcap \overline{O}(x) = \{x\}$, где пересечение по всем окрестностям, содержащим $x$.  
+\end{statement}
+\begin{proof}
+    $\Rightarrow x \in \bigcap \overline{O}(x)$, пересечение по всем окрестностям точки $x$. Докажем методом от противного: пусть существует $y \in \bigcap \overline{O}(x)$, где пересечение по всем окрестностям точки $x$. Тогда $\forall \overline{O}(x)\ y \in \overline{O}(x) \Leftrightarrow \forall V(y)\ V(y) \cap O(x) \neq \varnothing$. Так как $X$ пространство $T_2$, то существует $U(x)$ и $U(y)$: $U(x) \cap U(y) = \varnothing$. Противоречие с тем, что $y$ принадлежит хотя бы одному $\overline{O}(x)$.\\
+    $\Leftarrow$ упражнение. 
+\end{proof}
+\begin{statement}
+    Из $T_4$ следует $T_0$.  
+\end{statement}
+\begin{proof}
+    Рассмотрим связное двоеточие: $X = \{x, y\}$ и $\tau = \{\varnothing, X\}$. Замкнутых множеств всего два $\{\varnothing, X\}$. Можем взять $F_1 = \varnothing$, $F_2 = X$. Или можем взять $F_1 = \varnothing, F_2 = \varnothing$.    
+\end{proof}
+
+\begin{statement}
+    Из $T_4$ не следует $T_3$. 
+\end{statement}
+\begin{proof}
+    Приведем контрпример: пусть $X = \R$, $\tau = \{\{(a, +\infty),\ a \in \R\}, \varnothing, \R\}$. Замкнутые множества имеют вид $F = (-\infty, a]$. Так как нет двух пересекающихся множеств, то пространство является $T_4$. Возьмем закнутое множество $(-\infty, a] =: F$ и точку $b$, причем $b \not\in F$. Единственной окрестностью $F$ является вся $\R$, так как это единственное открытое множество удовлетворяющее топологии и содержащее $F$. Тогда любая окрестность точки $b$ будет нетривиально пересекаться с $\R$. Значит $X$ не является $T_3$.   
+\end{proof}
+
+\begin{statement}
+    $T_4 + T_1 \Rightarrow T_3$. 
+\end{statement}
+\begin{proof}
+    Из утверждения 5.1 следует, что $\{x\}$ замкнуто. Пусть $F_1 = \{x\}$, $F = F_2$, применяем аксиому $T_4$. 
+\end{proof}
+
+\begin{definition}
+    $X$ -- нормально, если оно $T_4 + T_1$. 
+\end{definition}
+
+\begin{lemma}
+    Пусть в метрическом пространстве $(X, \rho)$ $F_1,F_2$ - замкнуты. Тогда $\forall x \in F_1$, $\exists \varepsilon > 0:\ O_{\varepsilon}(x)\cap F_2 = \varnothing$.
+\end{lemma}
+\begin{proof}
+    Предположим противное: пусть нельзя найти такую $O_{\varepsilon}(x)$, то есть $\forall \varepsilon > 0\ O_{\varepsilon}(x) \cap F_2 \neq \varnothing$. Тогда $x \in \overline{F_2}$, но $\overline{F_2} = F_2 \Longrightarrow x \in F_1 \cap F_2 \neq \varnothing$.  
+\end{proof}
+
+\begin{theorem}
+    Метрическое пространство нормально.
+\end{theorem}
+\begin{proof}
+    Метрическое пространство хаусдорфово, то есть выполняется аксиома $T_2$, из которой следует аксиома $T_1$. Докажем $T_4$. Пусть $F_1, F_2$ -- замкнутые непересекающиеся множества. Возьмем точку $x_1 \in F_1$ и рассмотрим $O_{\varepsilon_1}(x_1)$. Можно построить окрестность $V(F_1) = \underset{x_1 \in F_1}{\bigcup} O_{\frac{\varepsilon}{2}}(x_1)$ и $W(F_2) = \underset{x_2 \in F_2}{\bigcup} O_{\frac{\varepsilon}{2}}(x_2)$.\\
+    Докажем, что $V(F_1) \cap W(F_2) = \varnothing$. Предположим противное: $\exists w \in V(F_1) \cap W(F_2)$. Тогда $\exists x_1 \in F_1: w \in O_{\frac{\varepsilon}{2}}(x_1)$ и $\exists x_2 \in F_2: w \in O_{\frac{\varepsilon}{2}}(x_2)$. Заметим, что $\rho(x_1, w) < \frac{\varepsilon}{2}$ и $\rho(x_2, w) < \frac{\varepsilon}{2}$, тогда по неравенству треугольника $\rho(x_1,x_2) < \varepsilon \Rightarrow x_1 \in O_{\varepsilon}(x_2)$, также $x_1 \in F_1$, но $O_{\varepsilon}(x_2)$ построена так, что она не пересекается с $F_1$.
+\end{proof}
