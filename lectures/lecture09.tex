@@ -1,0 +1,106 @@
+\section{Лекция 9}
+
+\begin{exercise}
+    Непрерывное отображение (гомеоморфизм) треугольника на квадрат.
+    $f: \Delta \rightarrow I \times I$
+
+    \[
+        f(x, y) =
+        \begin{cases}
+            (x + y, x + y), & x > y \\
+            (2x, 2x), & x = y \\
+            (x + y, x + y), & x < y
+        \end{cases} = (x + \min{(x, y)}, x + \min{(x, y)})
+    \]
+    % \begin{center}
+    %     \begin{tikzpicture}
+    %         \draw (0,0) -- (1,0) -- (0, 1) -- (0,0);
+    %         \draw (0,0) -- (0.5, 0.5);
+    %         \draw (0,0.5) -- (0.5, 0.5);
+    %         \draw (0.5,0) -- (0.5, 0.5);
+    %     \end{tikzpicture}
+    % \end{center}
+\end{exercise}
+
+\subsection{Теорема Титца о продолжении непрерывной функции}
+
+\begin{theorem}[Титца о продолжении непрерывной функции]
+    Пусть $X$ - нормальное топологическое пространство. $F \subset X$ - замкнутое подмножество. $\varphi: F \rightarrow \R$ - непрерывная ограниченная(т.е. $\norm{\varphi} = \sup_{x \in F}|\varphi(x)| < \infty$) функция.
+
+    Тогда существует $\Phi: X \rightarrow \R$ - непрерывное продолжение функции $\varphi$, которое сохраняет норму $\norm{\Phi} = \sup_{y \in X} \abs{\Phi(y)} = \norm{\varphi}$
+\end{theorem}
+\begin{proof}
+    Будем строить две последовательности функций.
+
+    \begin{enumerate}
+        \item $\Phi_n: X \rightarrow \R$
+        \item $\varphi_n: F \rightarrow \R$
+    \end{enumerate}
+
+    \begin{nota_bene}
+        Пусть $f_n(x) : Y \rightarrow \R$ - фундаментальная последовательность, тогда существует $f(y) = \lim_{n \to \infty} f_n(y)$
+        \begin{exercise}
+            Доказать, что фундаментальная последовательность равномерно сходится.
+        \end{exercise}
+    \end{nota_bene}
+
+    Алгоритм построения последовательностей.
+
+    \begin{enumerate}
+        \item $\varphi_0 = \varphi$, так как $\varphi$ - ограниченная функция, то выполняется $\norm{\varphi} = \norm{\varphi_0} = M_0 < +\infty$
+        Определим два замкнутых множества в $X$
+        \[
+            A_0 = \cbr{x \in F : \varphi(x) = \varphi_0(x) \leq -\frac{M_0}{3}}
+        \]
+        \[
+            B_0 = \cbr{x \in F : \varphi(x) = \varphi_0(x) \geq \frac{M_0}{3}}
+        \]
+        Очевидно, что эти множества являются замкнутыми и непересек.
+
+        Применим лемму Урысона к отрезку $\sqbr{-\frac{M_0}{3}, \frac{M_0}{3}}$, получим функцию $\Phi_0(x)$, которая на $A_0$ тождественна $-\frac{M_0}{3}$, на $B_0$ тождественна $\frac{M_0}{3}$.
+
+        Рассмотрим "номру" функции $\Phi_0$: $\norm{\Phi_0} \leq \frac{M_0}{3}$.
+        \item определим функции $\varphi_1 = \varphi_0 - \Phi_0$ на множестве $F$. Эта функция непрерывна. Рассмотрим норму введеной функции на 3-ех участках.
+        \begin{enumerate}
+            \item $\varphi_0 \geq \frac{M_0}{3}$; $\Phi_0 = \frac{M_0}{3}$
+            \item $ - \frac{M_0}{3} \leq \varphi_0 \leq \frac{M_0}{3}$; $-\frac{M_0}{3} \leq \Phi_0 \leq \frac{M_0}{3}$
+            \item $\varphi_0 \leq -\frac{M_0}{3}$; $\Phi_0 = -\frac{M_0}{3}$
+        \end{enumerate}
+        Из этих неравенств видно, что
+        \[
+            \norm{\varphi_1} \leq \frac{2 M_0}{3}
+        \]
+        % \begin{statement}
+        %     Норму этой функции можно ограничить числом < 1. 
+        % \end{statement}
+        % todo: добавить картинку
+        \item Примени тоже построение, что и в предыдущем пункте, счетное число раз и получим две последовательности функций. 
+    \end{enumerate}
+
+    Таким образом получили, что
+    \begin{center}
+        $\varphi_{n + 1} = \varphi_n - \Phi_n$ на множестве $F$
+    \end{center}
+    И
+    \begin{align}
+        & \norm{\Phi_{n + 1}} \leq \frac{M_0}{3}
+        & \norm{\varphi_{n + 1}} \leq \frac{2 M_0}{3}
+    \end{align}
+    Следовательно
+    \begin{align}
+        & \norm{\Phi_{n + 1}} \leq \frac{1}{3} \br{\frac{2}{3}}^{n - 1} M_0
+        & \norm{\varphi_{n + 1}} \leq \br{\frac{2}{3}}^n M_0
+    \end{align}
+
+    Рассмотрим ряд $\sum_{i = 0}^{\infty}\Phi_i$. Докажем, что последовательность частичных сумм $S_n = \sum_{i = 0}^{n}\Phi_i$ будет фундаментольной.
+    \[
+        \norm{S_n - S_m} = \norm{S_{m + 1} + \ldots + S_n} \leq \sum_{i = 0}^{\infty}\abs{\Phi_i} \leq \frac{M_0}{3} \br{\frac{2}{3}}^{n + 1} \sum_{l = 0}^{\infty} \br{\frac{2}{3}}^l = M_0 \br{\frac{2}{3}}^{n + 1} < \varepsilon
+    \]
+    Таким образом она сходится и $S_n \rightrightarrows \Phi$
+
+    Докажем, что $\Phi$ совпадает с $\varphi$ на $F$.
+    \[
+        \norm{\varphi - \sum_{i = 0}^{n} \Phi_i} = \norm{\varphi_{n + 1}} \leq \br{\frac{2}{3}}^n M_0
+    \]
+    Припредельном переходе получим $\varphi = \Phi$ на множестве $F$.
+\end{proof}
