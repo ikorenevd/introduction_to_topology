@@ -1,0 +1,71 @@
+\section{Лекция 15}
+
+Все пространства хаусдорфовы.
+
+\begin{definition}
+    Функция $k(x) = 0 \cup \N \cup \{+\infty\}$ - число $p^{-1}(x)$, число прообразов. - число листов накрытия.
+\end{definition}
+
+\begin{exercise}
+    Из определения $k$ следует, что это локально постоянная функция. 
+\end{exercise}
+
+\begin{exercise}
+    $X$ - связно, $k(x)$, $X \rightarrow D$ - локально постоянно, тогда $k(x) = const$.
+\end{exercise}
+
+\begin{definition}[топологическое действие]
+    Дополнительное требуем, что бы при фиксированном элементы группы отображения было гомеоморфизмом. 
+\end{definition}
+
+\begin{definition}
+    Вполне разрываное действие - дейстиве такое, что для каждой точки $x \in X$ существует окрестность $U(x)$, такая что, при действиее $gU \cup g'U = \emptyset$ при $g \neq g'$.
+\end{definition}
+
+\begin{theorem}
+    Пусть $\tilde{X}$ - связное, локальное линейное свзяное(из этого следуте, что оно линейное связное), $\tilde{X}$ - односвязное. На $\tilde{X}$ действует свободное и вполне разрывано действует дискретное не более, чем счетная группа $\Gamma$.
+
+    Тогда $p: \tilde{X} \rightarrow \faktor{\tilde{X}}{\Gamma}$ - накрытие и $\Gamma \cong \pi_1(\faktor{\tilde{X}}{\Gamma})$
+\end{theorem}
+
+\begin{proof}
+    $p: \tilde{X} \rightarrow \faktor{\tilde{X}}{\Gamma}$ - факторпространство или пространство орбит. Пусть $U \subset \tilde{U}$. Рассмотрим $p(U)$ - почему открыто?
+    \[
+        p^{-1}(p(U)) = \bigcup_{g \in \Gamma} gU
+    \]
+    - оно открыто, т.о. отображение $p$ - открытое.
+
+    Надо доказать, что ограничение $p$ на произвольный лист $gU$ - это $gU \rightarrow p(U)$ - биекция.
+    Нужно вязть $u$ такоим образом, что $gU \cap g'U = \emptyset$. Пусть $y_1, y_2 \in gU$ и $p(g y_1) = p(g y_2)$. Второе $\Leftrightarrow g y_1 \sim g y_2 \Leftrightarrow$ существует $g' \in \Gamma g y_1 = g' (g y_2) = (g' g) y_2$, тогда $gU = g'gU \neq \emptyset$ - противоречие, следовательно $g' = e \in \Gamma$.
+
+    Остается доказать, что обратное тоже непрерывно. - самостоятельно.
+
+    Докажем изоморфизм групп. Построи отображение $\psi: \Gamma \rightarrow \pi_1 (\faktor{\tilde{X}}{\Gamma})$
+    \[
+        g \in \Gamma \longmapsto \sqbr{\gamma_g ????????} 
+    \]
+    Остается проверить, что это гомоморфизм.
+\end{proof}
+
+\begin{definition}
+    Накрытие называется называется универсальным, если $\tilde{X}$ - односвязно.
+\end{definition}
+
+Действие непрерывных отображений на $\pi_1$. 
+$f$ - непрерывное отображение - индуцирует $f_* :\pi(X, x_0) \rightarrow \pi_1(y, f(x_0))$, $g_* : \pi(Y, f(x_)) \rightarrow \pi_1(Z, z_0)$, тогда $(gf)_* = g_* f_*$
+
+\begin{exercise}
+    $z: X \rightarrow A$ - ретракция, $i$ - вложение $A$ в $X$, тогда $r i = \id_A$, $r^* i^* = \id_{*A}$
+\end{exercise}
+
+\begin{exercise}
+    $\pi_1(X) \cong \pi_1(Y)$, тогда они гомотопически эквивалентны.
+\end{exercise}
+
+\begin{theorem}[Брауэр]
+    $f: D^2 \rightarrow D^2$ - непрерывное отображение,то существует неподвижная точка.
+\end{theorem}
+
+\begin{proof}
+    Очевидно.
+\end{proof}

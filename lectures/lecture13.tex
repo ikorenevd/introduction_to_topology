@@ -1,0 +1,92 @@
+\section{Лекция 13}
+
+\subsection{Фундаментальная группа}
+
+Пусть $X$ - топологическое пространство, выберем в нем две точки $x_0, x_1$. Рассмотрим множество путей из $x_0$ в $x_1$.
+
+\begin{definition}
+    Пусть - непрерывное отображение $\gamma: [0,1] \rightarrow X$.
+\end{definition}
+
+\begin{definition}[гомотопия путей - связная гомотопия]
+    Гомотопия, сохраняющее точки на граница отрезка, для отображений - $\gamma_0, \gamma_1: [0,1] \rightarrow X, \gamma_i(0) = x_0, \gamma_i(1) = x_1$.
+\end{definition}
+
+\begin{definition}
+    Пространство путей из $x_0$ в $x_1$ = $\cbr{\gamma : [0,1] \rightarrow X : \ \gamma(0) = x_0, \gamma(1) = x_1}$. Обозначается $\Omega(x_0, x_1)$.
+\end{definition}
+
+\begin{nota_bene}
+    Отношение гомотопности - отношение эквивалентности.
+\end{nota_bene}
+
+\begin{definition}
+    $\pi^{x}(x_0, x_1) = \faktor{\Omega(x_0, x_1)}{\sim}$ - множество гомотопических классов путей
+\end{definition}
+
+Умножение путей. Можем умножать пути, у которых начало первого и нонец второго совпадают, т.е $\gamma_1(1) = \gamma_2(0)$, где $\gamma_1$ - путь от $x_0$ до $x_1$, $\gamma_2$ - путь от $x_1$ до $x_2$.
+\begin{align}
+    \gamma_1 \gamma_2 = \begin{cases}
+        \gamma_1 (2t), & 0 \leq t \leq \frac{1}{2} \\
+        \gamma_2 (2t - 1), & \frac{1}{2} < t \leq 1
+    \end{cases}
+\end{align}
+
+Видно, что операция не ассоциативна, но $\gamma_1 (\gamma_2 \gamma_3) \sim (\gamma_1 \gamma_2) \gamma_3$. Докажем это.
+\begin{proof}
+    Построим гомотопию.
+    \begin{align}
+        H(t, s) = \begin{cases}
+            \gamma_1(\frac{4}{s + 1} t) & 0   \leq t < t_1 = \frac{s + 1}{4} \\
+            \gamma_2(4t - 4 t_1) & t_1 \leq t < t_2 = \frac{s + 2}{4} \\ 
+            \gamma_3(???) & t_2 \leq t \leq 1 \\ 
+        \end{cases}
+    \end{align}
+\end{proof}
+
+Таким образом умножение путей ассоциативно с точностью до гомотопии.
+
+\begin{definition}
+    Петля с фиксированный началом = замкнутый путь, т.е. $\gamma(0) = \gamma(1) = x_0 \in X$.
+\end{definition}
+
+\begin{definition}
+    Рассмотрим $\faktor{\Omega(x_0, x_0)}{\sim}$ с операцией умножения путей. Это фундаментальная группа, обозначается $\pi_1(X, x_0)$
+\end{definition}
+
+\begin{nota_bene}
+    Умножение классов эквивалентности $[\gamma_1][\gamma_2] = [\gamma_1 \gamma_2]$.
+\end{nota_bene}
+
+\begin{theorem}
+    Это действительно группа.
+\end{theorem}
+
+\begin{proof}
+    Проверим корректность. Пусть $\gamma_i, \gamma'_i \in [\gamma_i]$, необходимо доказать, что $[\gamma_1][\gamma_2] = [\gamma'_1] [\gamma'_2]$ - очевидно.
+    
+    Ассоциативность уже доказана.
+
+    Существование нейтрального элемента $e = [\gamma: [0,1] \rightarrow x_0]$
+
+    Обратный элемент $[\gamma]^{-1} = [\gamma(1 - t)]$
+\end{proof}
+
+Зависимость $\pi_1$ от начальной точки. Выберем две различные точки в пространстве $X$ - $x_0$ и $x_1$. И между этими точками существует путь $\tilde{\gamma}$.
+
+Петле(классу гомотопической эквивалентности) из $[\gamma ]\in \faktor{\Omega(x_0)}{\sim}$ сопоставляем путь $[\tilde{\gamma} \gamma \tilde{\gamma}^{-1}]$, т.е. мы задали отображнение из $\pi_1(X, x_1)$ в $\pi_1(X, x_2)$, обозначим его $[\gamma]^*$.
+
+\begin{statement}
+    $[\gamma]^*$ изоморфизм групп
+\end{statement}
+\begin{proof}
+    Очевидно.
+\end{proof}
+Таким образом, если $X$ - линейно связно, то фундаментальная группа не зависит от выбора точки.
+
+\begin{definition}
+    Если фундаментальная группа тривиально, то пространство называется односвязным.
+\end{definition}
+
+
+ 

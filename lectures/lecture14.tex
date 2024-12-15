@@ -1,0 +1,105 @@
+\section{Лекция 14}
+
+\begin{nota_bene}
+    Даты досрочного экзамена: 16, 17.
+    email: dmitry.millionschikov@math.msu.ru 
+\end{nota_bene}
+
+\begin{definition}
+    Пространство $X$ называется односвязным, если любые два пути с общими началамии концом гомотопны(гомотопия связанная). 
+\end{definition}
+
+\begin{theorem}
+    Если $X$ линейное свзяное, то $X$ односвязно тогда и только тогда, когда $\pi_1(x) = \{0\}$
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$:)
+        Пусть $gamma_1$ - петля с началом в точек $x_0$.
+        $\gamma_0 = \cbr{\gamma_1(t) = x_0 \forall t}$. В силу односвязности $\gamma_1 \sim \gamma_0 = const$, следовательно тривиальная $\pi_1(X, x_0) \simeq \pi_1(X)$;
+
+
+    ($\Leftarrow$:)
+        Петля $\gamma_0 \gamma^{-1}_1$ с началом в точке $x_0$ и $\pi_1(X, x_0) = \{0\}$, следовательно $\gamma_0 \gamma^P{-1}_1 \sim const(x_0) = \{0\}$
+        \[
+            \gamma_1 \sim (\gamma_0 \gamma^{-1}_1) \gamma_1 \sim \gamma_0 (\gamma^{-1}_1 \gamma_1) \sim \gamma_0
+        \] 
+\end{proof}
+
+\subsection{Накрытие}
+
+Пусть $p: \tilde{X} \rightarrow X$ - непрерывное отображение между двумя линейно связными пространствами.
+
+\begin{definition}
+    $p$ - накрытие, если для $x \in X$ существует окрестность $U = U(x)$ и $p^{-1}(U) = \bigsqcup_{i \in D \subset \N} V_i$, где $p : V_i \rightarrow U$ - сужжение $p$ на $V_i$ - гомеоморфизм.
+\end{definition}
+
+\begin{example}
+    $\tilde{X} = X \times \N \rightarrow X$ - тривиальный пример.
+\end{example}
+    
+\begin{example}
+    $\tilde{X} = \R \rightarrow X = S^q \subset \R^2$, где $p(t) = (\cos t, \sin t)$, т.е. $t \mapsto e^{2\pi i t}$
+\end{example}
+
+\begin{example}
+    Пусть $\tilde{X}, X$ - две окружности. $p(z) = z^n$
+\end{example}
+
+\begin{example}
+    $\R \times \R \to S^1 \times S^1$, $p = (p_{\text{окр}}, p_{\text{окр}})$
+\end{example}
+
+\begin{example}
+    $\tilde{X} = S^2 \rightarrow \R P^2$ - отождествялем противоположные относительно центра точки.
+\end{example}
+
+\begin{lemma}[Лебега]
+    Пусть $X$ - компактное метрическое пространство с метрикой $\rho$, $\{U_{\alpha}\}$ - покрытие, тогда существует $r > 0$ (число Лебега покрытия) такое, что любой шар $O_r(x) \subset U_{\tilde{\alpha}}$ для некоторого $\tilde{\alpha}$
+\end{lemma}
+\begin{proof}
+    Т.к. есть покрытие у пространства $X$, то у каждой точки $x \in X$ существует $r_x $ такой, что $O_{r_x} \subset U_i$ для некоторого $i$.
+
+    \begin{statement}
+        $\{O_{\frac{1}{2}r_x}(x)\}$ - покрытие $X$.
+    \end{statement}
+
+    Т.к. $\{O_{\frac{1}{2}r_x}(x)\}$ - компакт, то будет существовать конечное подпокрытие.
+
+    Определим Лебегово число $\tilde{r} = \min_i \frac{1}{2}r_{x_i}$
+
+    Сдвинем шар так, чтобы выполнялось $y \in O_{\frac{1}{2}r_{x_i}}(x_i) \Leftrightarrow x_i \in O_{\frac{1}{2}r_{x_i}}(y)$
+
+    \[
+        O_r(y) \subset O_{\frac{1}{2}r_{x_i}}(y) \subset O_{\frac{1}{2}r_{x_i}}(x_i) \subset U_{\tilde{\alpha}}
+    \]
+\end{proof}
+
+\begin{theorem}[Следствие]
+    $f:X \rightarrow Y$, $X$ - компакт в метрическом пространстве, $Y$. Если $\{U_{\alpha}\}$ - покрытие $Y$ существует $r > 0$ такое, что любой шар $O_r(x) \subset U_{\alpha}$.
+\end{theorem}
+
+\begin{theorem}[о накрывающем пути]
+    $p: \tilde{X} \rightarrow X$ - накрытие. $\gamma: I \rightarrow X$ - непрерывный путь, $\gamma(0) = x_0 \in X$, $\tilde{x}_0 \in p^{-1}(x_0)$. Тогда существует единственное $\tilde{\gamma}$ такое, что $p \tilde{\gamma} = \gamma$
+\end{theorem}
+\begin{proof}
+    Будет потом.
+
+    Докажем единственность.
+\end{proof}
+
+\begin{statement}
+    Накрывающий путь единств.
+\end{statement}
+
+\begin{statement}
+    $f_0, f_1: Y \rightarrow \tilde{X}$, $Y$ - связное, $p: \tilde{X} \rightarrow X$ - накрытие, $p f_0 = p f_1$. Тогда $Y' = \{y \in Y : f_0(y) = f_1(y)\}$.
+    Тогда из связности $Y$ следует, что $Y' = Y$ или $Y' = \emptyset$.
+\end{statement}
+
+\begin{exercise}
+    Доказать утверждения выше.
+\end{exercise}
+
+\begin{theorem}[о накрывающей гомотопии]
+
+\end{theorem}
