@@ -9,3 +9,90 @@
 % Т.е. $F$ - отображения из цилиндра в пространство $Y$. Если $F$ непрерывно и $F(x, 0) = f_0(x), F(x, 1) = f_1(x)$, то $F$ - гомотопия.
 
 % Причем гомотопность отображений $X \rightarrow Y$ - отношение эквивалентности
+
+\subsection{Алгебраическая топология. Теория гомотопий}
+
+%Гомотия - непрерывная деформация отображений
+%Гомотопия - это путь в пространстве отображений
+
+Рассматриваем отображения $f_0: X \rightarrow Y$ и $f_2: X \rightarrow Y$, $f_i \in C(X, Y)$ - пространство непрерывных функций. Пусть $t \in [0, 1] = I$, $f_t(x) = F(x, t)$.
+\[
+    F: X \times I \rightarrow Y
+\]
+Т.е. $F$ - отображения из цилиндра в пространство $Y$. %Если $F$ непрерывно и $F(x, 0) = f_0(x), F(x, 1) = f_1(x)$, то $F$ - гомотопия.
+
+\begin{definition}
+    Гомотопия -- это непрерывное отображение $F:X\times I \mapsto Y$, такое что $F(x,0) = f_0,\ F(x,1)  = f_1$.
+\end{definition}
+
+\begin{statement}
+    Гомотопность отображений $f:X\mapsto Y$  является отношением эквивалентности.
+\end{statement}
+\begin{proof}
+    Рефлексивнось ($f \sim f$): $F(x, t) = f(x, t)$. Симметричность ($f \sim g \Rightarrow g \sim f$): $\exists F(x, t) \Rightarrow \exists \overset{\sim}{F}(x,t) = F(x, 1- t)$. Транзитивность ($f \sim g, \gamma \sim h\Rightarrow g \sim h$): $\exists F(x, t)$ и $G(x, t) \Rightarrow $ 
+    $$\exists \Phi(x, t) = \begin{cases}
+        F(x, 2t),\ t \in [0, \frac{1}{2}]\\
+        G(x, 2t - 1),\ t \in (\frac{1}{2}, 1]
+    \end{cases}$$
+    $\Phi(x, t)$ непрерывна при $t \neq \frac{1}{2}$. Рассмотрим $\underset{t\mapsto \frac{1}{2}-}{lim} F(x,t) =: F(x, \frac{1}{2}) = g$. $G$ непрерывна, тогда $\underset{t\mapsto \frac{1}{2}+}{lim} G(x, t) = G(x, \frac{1}{2}) = g$. Таким образом $\underset{t\mapsto \frac{1}{2}}{lim} \Phi(x, t) = g$ и $g$ непрерывна. 
+\end{proof}
+
+%https://www.youtube.com/watch?v=hV2Y1In6LQY&t=1206s 21:00
+
+\begin{exercise}
+    $f(x,y)$ непрерывно по аргументам в отдельности. Тогда $f$ непрерывно.
+\end{exercise}
+
+\underline{Обозначение:} количество гомотопических классов $\pi(X, Y) := C(X, Y) / \sim$. Класс $f: [f] \in \pi(X, Y)$.
+
+\begin{definition}
+    Топологические пространства $X$ и $Y$ называются гомотопически эквивалентными $X \sim Y$, если $\exists f: X \mapsto Y$ и $\exists g: X \mapsto Y$, где $f$ и $g$ непрерывны, такие что $f\circ g: Y \mapsto Y$, $g\circ f: X \mapsto X$ и $f \circ g \sim Id_Y, g \circ f \sim Id_X$. 
+\end{definition}
+
+\begin{example}
+    $\mathbb{R}^n \sim \{\overline{0}\}$. Рассмотрим $f: \mathbb{R}^n \mapsto \{\overline{0}\}$, по правилу $f(x) = \overline{0}\ \forall x$  и $g:\{\overline{0}\} \mapsto \mathbb{R}^n$, по правилу $f(\overline{0}) = \overline{0}$. Заметим, что $f, g$ непрерывны. $f\circ g(\overline{0}) = f(\overline{0}) = \overline{0} \Rightarrow f\circ g = Id_{\{\overline{0}\}}$. Также $g\circ f(x) = g(\overline{0}) = \overline{0}$. $F(\overset{\rightarrow}{x}, t) = t\overset{\rightarrow}{x}$. При $t = 1: F(\overset{\rightarrow}{x}, 1) = Id_{\mathbb{R}^n }$. При $t = 0: F(\overset{\rightarrow}{x}, 0) = 0$. Таким образом $g\circ f(x) \equiv \overline{0}(x) \sim Id_{\mathbb{R}^n}$.  
+\end{example}
+
+\begin{statement}
+    Гомотопность топологических пространств является отношением эквивалентности.
+\end{statement}
+
+\begin{nota_bene}
+    Гомотопность пространств $X$ и $Y$ слабее гомеоморфности, то есть из гомеоморфности следует гомотопность. $\exists f, f^{-1} | \varphi^{-1} = Id_Y,\ f^{-1}f = Id_X$.   
+\end{nota_bene}
+
+\begin{definition}
+    Пусть задан гомотопический класс пространства X. $[X]$ называется его гомотопическим типом.
+\end{definition}
+
+\begin{definition}
+    Топологическое пространство $X$ называется стягиваемым, если оно гомотопически эквивалентно точке. 
+\end{definition}
+
+\begin{exercise}
+    $I = [0, 1]$ стягиваем.
+\end{exercise}
+
+\begin{statement}
+    Пусть $f,g: X \mapsto I = [0, 1]$ непрерывны. Тогда $f \sim g$. 
+\end{statement}
+
+\begin{statement}
+    Пусть $f,g: X \mapsto Y$, где $Y$ - стягиваемо. Тогда $f \sim g$. 
+\end{statement}
+
+\begin{definition}
+    Пусть $A \subseteq X$, $(X, \tau)$ -- топологическое пространство. Тогда ретракция (сильная) -- это $\Gamma: X \mapsto A$ -- непрерывная, такая что $\Gamma|_A \equiv Id_A$ и $A$ -- (сильный) ретракт. Ретракция (слабая) -- это $\Gamma:X \mapsto A$ -- непрерывная, такая что $\Gamma|_A \equiv Id_A$ и $A$ -- (слабый) ретракт.    
+\end{definition}
+
+\begin{example}
+    Кольцо $\overline{D_1^2 \ D_2^2}$
+\end{example}
+
+\begin{definition}
+    Деформация пространства $X$ в подпространство $A \subset X$ -- это гомотопия $D:X\times I \mapsto X$, такая что $D(x, 0) = x\ \forall x \in X$ и $D(x, 1) \in A\ \forall x \in X$.  
+\end{definition}
+
+\begin{definition}
+    Если дополнительно $D(x ,t) \in A\ \forall x \in A, \forall t \in I$, то $A$ -- сильный деформационный ретракт. 
+\end{definition}
