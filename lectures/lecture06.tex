@@ -7,106 +7,113 @@
 
 Вопрос: что нужно добавить для нормального пространства, чтобы оно стало метризуемым?
 
-\subsection{Функциональная отделимость}
+\subsection{Функциональная отделимость.}
 
-% \begin{definition}[функциональная отделимость]
-    
-% \end{definition}
-
-\begin{definition}
-    $A \subset X$ - всюду плотно в $X$, если $\overline{A} = X$.
+\begin{definition}[Функциональная отделимость]
+    Два подмножества $A, B \subset X$ топологического пространства $X$ называются функционально отделимыми в $X$, если существует такая определенная на всём пространстве вещественная ограниченная непрерывная функция $f: X \to \R$, которая принимает во всех точках множества $A$ одно значение $a$, a во всех точках множества $B$ --- некоторое отличное от $a$ значение $b$.
 \end{definition}
 
+\begin{definition}
+    Подмножество $A \subset X$ топологического пространства $X$ называется всюду плотным в $X$, если $\overline{A} = X$.
+\end{definition}
+
+\begin{example}
+    Множество $\Q$ всюду плотно в $\R$.
+\end{example}
+
+\begin{statement}[Характеризация хаусдорфова пространства]
+    $X$ --- хаусдорфово пространство $\Longleftrightarrow$ $\forall x, y \in X, x \neq y$: существует окрестность $O(x) : y \notin \overline{O}(x)$.
+\end{statement}
+\begin{proof}
+    ($\Leftarrow$): $y \notin \overline{O}(x) \Leftrightarrow y \in X \setminus \overline{O}(x)$ --- открыто, значит, существует окрестность $O(y)$: $O(y) \subset X \setminus \overline{O}(x) \ \Leftrightarrow \ O(y) \cap \overline{O}(x) = \es$. Тогда $O(y) \cap \overline{O}(x) = \es$, а значит, $X$ хаусдорфово. \\
+    ($\Rightarrow$): От противного: пусть для любой окрестности $O(x): y \in \overline{O}(x)$. Тогда для любой окрестности $V(y): V(y) \, \cap \, O(x) \neq \es$ --- противоречие с хаусдорфовостью $X$. Значит, существует окрестность $O(x) : y \notin \overline{O}(x)$.
+\end{proof}
+
 \begin{theorem}[Лемма Урысона]
-    Пусть $X$ - нормальное пространство. $A, B$ - два замкнутых непересекающихся подмножества $X$. Тогда существуеют непрерывная функция $F: X \rightarrow [0, 1] \subset \R$, такая, что $F(A) = \cbr{0}$ и $F(B) = \cbr{1}$
+    Пусть $X$ - нормальное пространство, $A, B$ --- два замкнутых непересекающихся подмножества $X$. Тогда $A$ и $B$ функционально отделимы, т.е. существует непрерывная функция $F: X \rightarrow [0, 1] \subset \R$, такая, что $F(A) = 0$ и $F(B) = 1$.
 % todo: вставить картинку про ступенки
 \end{theorem}
 \begin{proof}
-    Для доказательства этой леммы будет использовать двоично-рациональные числа, это
+    Для доказательства этой леммы будет использовать двоично-рациональные числа, т.е. множество
     \[
-        S = \cbr{q = \frac{m}{2^n}, m \in \Z, n \in \N}
+        S = \cbr{q = \frac{m}{2^n} \mid m \in \Z, n \in \N}
     \]
+    Двоично-рациональные числа всюду плотны в $\R$ --- доказательство этого факта остаётся читателю в качестве упражнения.
     % todo: добавить картинку для изображения дробно рациональных чисел на [0, 1]
 
     Стандартное доказательство: 
         
-        Будем строить по индукции семейство открытых множеств $U$, которые мы заиндексируем двоично-рациональными числа из $[0, 1]$.
+        Будем строить по индукции семейство открытых множеств $U_{q}$, которые мы заиндексируем двоично-рациональными числами $q \in S \cap [0, 1]$:
         
-            1. $U_1 = X \subset B$
+            1. $U_1 = X \setminus B$.
             
-            2. $U_0$ должно быть следующим $A \subset U_0 \subset \overline{U}_0 \textbf{ (используем нормальность) } \subset U_1$
+            2. $U_0$ должно удовлетворять требованию: $A \subset U_0 \subset \overline{U}_0 \subset U_1$.
 
-            3. $U_{\frac{1}{2}}$ должно выполняться $\overline{U}_0 \subset U_{\frac{1}{2}} \subset \overline{U}_{\frac{1}{2}} \subset U_1$, cуществование такого множества следует из нормальности, примененной к дополнениям $U_0$ и $U_1$.
+            3. $U_{\frac{1}{2}}$ должно удовлетворять требованию: $\overline{U}_0 \subset U_{\frac{1}{2}} \subset \overline{U}_{\frac{1}{2}} \subset U_1$.
 
-            4. $U_{\frac{1}{4}}:$ $\overline{U}_0 \subset U_{\frac{1}{4}} \subset \overline{U}_{\frac{1}{4}} \subset U_{\frac{1}{2}}$ и $U_{\frac{3}{4}}:$ $\overline{U}_\frac{1}{2} \subset U_{\frac{3}{4}} \subset \overline{U}_{\frac{3}{4}} \subset U_{1}$
+            4. $U_{\frac{1}{4}}$ и $U_{\frac{3}{4}}$ должны удовлетворять требованиям: $\overline{U}_0 \subset U_{\frac{1}{4}} \subset \overline{U}_{\frac{1}{4}} \subset U_{\frac{1}{2}}$, \ \ $\overline{U}_\frac{1}{2} \subset U_{\frac{3}{4}} \subset \overline{U}_{\frac{3}{4}} \subset U_{1}$.
 
-            5. индуктивный переход. Берем $q = \frac{2k + 1}{2^n}$. Рассмотрим соседние c $q$ столбики - они будут иметь вид $\frac{k}{2^{n - 1}}$ и $\frac{k + 1}{2^{n - 1}}$.
+            5. Индуктивный переход: на n-ом шаге берём $q = \frac{2k + 1}{2^n}$. Рассматриваем соседние c $q$ двоично-рациональные числа: $\frac{k}{2^{n - 1}}$ и $\frac{k + 1}{2^{n - 1}}$. Тогда ${U}_{q}$ должно удовлетворять требованию:
             \[
-                \overline{U}_{\frac{k}{2^{n - 1}}} \subset U_q \subset \overline{U}_q \subset U_{\frac{k + 1}{2^{n - 1}}}
+                \overline{U}_{\frac{k}{2^{n - 1}}} \subset U_{\frac{2k + 1}{2^n}} \subset \overline{U}_{\frac{2k + 1}{2^n}} \subset U_{\frac{k + 1}{2^{n - 1}}}.
             \]
 
-        Пострили системс открытых множеств. Это система множеств $\cbr{U_q}$ обладает свойством упорядоченности, т.е. если $q < r \in S$, то $\overline{U}_q \subset U_r$. Теперь определим функцию $F$.
+            Заметим, что все данные множества существуют в силу нормальности пространства $X$. Поясним это подробнее:
+            Характеризация $T_3$ и $T_4$-пространств: \\
+            $T_3$): Если $x_0 \in X$, $F \subset X$ --- замкнуто и не содержит точку $x_0$, то существует окрестность $O(x_0): \ \overline{O}(x_0) \cap F = \es$, \\
+            $T_4$): Если $F_1, F_2$ --- замкнутые непересекающиеся подмножества $X$, то существует окрестность $O(F_1): \ \overline{O}(F_1) \cap F_2 = \es$. \\
+            Доказательства этих утверждений аналогичны доказательству утверждения о характеризации хаусдорфова пространства.
 
-        % todo: добавить оператор inf
+            Тогда: на первом шаге: $U_1 = X \setminus B$. $B$ замкнуто, значит, $U_1$ открыто. Пользуясь приведёнными утверждениями, положим $U_0 = O(A): \overline{U_0} \cap B = \es$. Тогда $\overline{U_0} \subset X \setminus B = U_1$.  \\
+            В индукционном переходе: положим $P = \overline{U}_{\frac{k}{2^{n - 1}}}, \ Q = X \setminus U_{\frac{k + 1}{2^{n - 1}}}$. Тогда: существует такая окрестность $O(P)$, что $\overline{O}(P) \cap Q = \es$. Значит, $\overline{O}(P) \subset X \setminus Q = U_{\frac{k+1}{2^{n-1}}}$. Окрестность $O(P) = O(\overline{U}_{\frac{k}{2^{n - 1}}})$ мы и берём в качестве множества $U_{\frac{2k+1}{2^{n}}}$ --- оно удовлетворяет требованиям, указанным в построении. Т.о. все строящиеся множества существуют.
+            
+            Итак, мы построили систему открытых множеств $\cbr{U_q}$, причём она естественно упорядочена по включению: если $q, r \in S \cap [0, 1]$ и $q < r$, то $\overline{U}_{q} \subset U_{r}$. Теперь определим функцию $F: X \to [0,1]$: \\
 
         \[
             F(x) = 
                 \begin{cases}
-                    \inf\cbr{q : x \in U_q}, & x \notin B \\
-                    1, & x \in B
+                    \inf\cbr{q \mid x \in U_q}, & x \notin B, \\
+                    1, & x \in B.
                 \end{cases}
         \]
 
-        Очевидно выполнение требований для множеств $A$ и $B$.
-        Проверим непрерывность. Достаточно проверить, что $F^{-1}(O_\alpha)$ - открыт, где $O_\alpha$ - элемент базы топологии отрезка. Можно это доказать только для $[0, a), (b, 0]$, т.к. остальные элементы топологии можно получить из этих двух.
+        Очевидно, $F\!\mid_{A} \ \equiv 0$ и $F\!\mid_{B} \ \equiv 1$.
+        Проверим непрерывность. По замечению (З.\,\ref{NB:Sufficient_condition_for_continuity_in_terms_of_base}) на стр.~(\pageref{NB:Sufficient_condition_for_continuity_in_terms_of_base}) достаточно проверить, что $F^{-1}(O_\alpha)$ --- открытое множество, где $O_\alpha$ --- элементы предбазы топологии отрезка $[0, 1]$. Т.о. достаточно рассмотреть $O_{\alpha}$ равными $[0, \alpha)$ или $(\alpha, 1]$ для всех $\alpha \in [0,1]$. 
 
-            Рассмотрим $x \in F^{-1}([0, a)) \Leftrightarrow F(x) < a  \Leftrightarrow \inf\cbr{q : x \in U_q} < a \Leftrightarrow \exists \widetilde{q} < a$, тогда $F^{-1}([0, a)) = \bigcup_{\widetilde{q} < a} U_{\widetilde{q}}$ - открыто.
-
-            Рассмотрим $F$, заданную другим образом 
+            1) Рассмотрим $x \in F^{-1}([0, a)) \ \Leftrightarrow \ F(x) < a \ \Leftrightarrow \ \inf\cbr{q \mid x \in U_q} < a \ \Leftrightarrow \ \exists \, \widetilde{q}: x \in U_{\widetilde{q}}, \ \widetilde{q} < a$. Тогда $F^{-1}([0, a)) = \bigcup_{\widetilde{q} < a} U_{\widetilde{q}}$ \ --- открыто как объединение открытых. \\
+            2) Заметим, что данное выше определение $F$ равносильно следующему: 
             \[
                 F(x) = 
                     \begin{cases}
-                        \sup\cbr{r : x \notin U_r}, & x \notin B \\
-                        1, & x \in B
+                        \sup\cbr{r \mid x \notin U_r}, & x \notin B, \\
+                        1, & x \in B.
                     \end{cases}
             \]
-            $\sup\cbr{r : x \notin U_r} = \sup\cbr{r : x \notin \overline{U}_r} = \sup\cbr{r : x \in X \setminus \overline{U}_r - \text{ это множество открыто}}$
-            Далее аналогично первому случаю.
-            
-    Иллюстрация:
-    % todo:
+            Тогда: при $x \not\in B$: $F(x) = \sup\cbr{r \mid x \notin U_r} = \sup\cbr{r \mid x \notin \overline{U}_r} = \sup\cbr{r \mid x \in X \setminus \overline{U}_r}$, множество $X \setminus \overline{U}_r$ открыто. Рассмотрим $x \in F^{-1}((b, 1]) \ \Leftrightarrow \ F(x) > b \ \Leftrightarrow \ \sup\cbr{r \mid x \in X \setminus \overline{U}_r} > b \ \Leftrightarrow \ \exists \, \widetilde{r}: x \in X \setminus \overline{U}_{\widetilde{r}}, \ \widetilde{r} > b$. Тогда $F^{-1}((b, 1]) = \bigcup_{\widetilde{r} > b} \br{X \setminus \overline{U}_{\widetilde{r}}}$ \ --- открыто как объединение открытых. \\
+            Т.о. построили функцию $F$, удовлетворяющую условиям теоремы.
+    % todo: вставить иллюстрацию.
 \end{proof}
 
-\begin{example}[Нормального, но не метризуемого пространства]
-    
-\end{example}
-
-\subsection{Взаимоотношение компактности и нормальности}
-
-\begin{nota_bene}[характеризация хаусдорфово пространства]
-    Пусть $X$ - хаусдорфово $\Leftrightarrow$ для каждых $x \neq y$ существует $O(x) : y \notin \overline{O}(x) $
-\end{nota_bene}
-\begin{proof}
-    ($\Leftarrow$): $y \notin \overline{O}(x) \Leftrightarrow y \in X \setminus \overline{O}(x)$ - открыто, тогда существует окрестность $O(y)$: $O(y) \cap \overline{O}(x) = \emptyset$, тогда $O(y) \cap \overline{O}(x) = \emptyset$.
-
-    % todo:
-    ($\Rightarrow$): от противного 
-\end{proof}
+\subsection{Связь компактности и нормальности.}
 
 \begin{statement}
-    Замкнутое подмножество компакта - компактно
+    Замкнутое подмножество компакта --- компакт. Обратное, вообще говоря, неверно.
 \end{statement}
 \begin{proof}
-    Очевидно.
+    Доказательство данного утверждения было оставлено в качестве упражнения в лекции 4. 
 \end{proof}
+
+\begin{exercise}
+    Доказать, что $\overline{A \cup B} = \overline{A} \cup \overline{B}$.
+\end{exercise}
 
 \begin{lemma}
     В хаусдорфовом топологическом пространстве $X$ компактное подмножество $F$ является замкнутым.
 \end{lemma}
 \begin{proof}
-    Очевидно.
+    Пусть $F$ не замкнуто. Тогда $\exists x_0 \in \overline{F}: x_0 \notin F$. Пусть $y \in F$. Т.к. $X$ хаусдорфово, то существует окрестность: $O(y): x \notin \overline{O}(y)$. Рассмотрим открытое покрытие $\bigcup_{y \in F} O(y)$ множества $F$ такими окрестностями. Т.к. $F$ --- компакт, то существует конечное подпокрытие $\bigcup_{i = 1}^{n} O(y_i) \supset F$. Тогда
+    \[
+        \overline{\bigcup_{i = 1}^{n} O(y_i)} \supset \overline{F} \ \Longleftrightarrow \ \bigcup_{i = 1}^{n} \overline{O(y_i)} \supset \overline{F}.
+    \]
+    Но $\forall i \in \cbr{1, \ldots, n}: x_0 \notin \overline{O(y_i)}$, значит, $x_0 \notin \bigcup_{i = 1}^{n} \overline{O(y_i)}$, при этом $x_0 \in \overline{F} \subset \bigcup_{i = 1}^{n} \overline{O(y_i)}$ --- противоречие. Значит, $F$ замкнуто.
 \end{proof}
-
-\begin{exercise}
-    $\overline{A \cup B} = \overline{A} \cup \overline{B}$
-\end{exercise}

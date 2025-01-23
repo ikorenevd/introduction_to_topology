@@ -25,10 +25,10 @@
     Рассмотрим множество $\mfB$ всех открытых шаров в пространстве $X$: \quad $\mfB = \cbr{O_{\veps}(x) \mid x \in X, \ \veps > 0}$. Проверим для $\mfB$ оба пункта достаточного условия на базу: \\
     1. Очевидно, $\forall x \in X \ \exists \, O_{\veps}(x) : x \in O_{\veps}(x)$ \\
     2. Обозначим: $B_1 = O_{\veps_1}(x_1), \ B_2 = O_{\veps_2}(x_2)$ и покажем, что $\forall x \in B_1 \cap B_2 \quad \exists B_3 = O_{\veps}(x) \in \mfB: B_3 \subset B_1 \cap B_2$. По определению открытых шаров $B_1$ и $B_2$:
-    $\rho(x, x_1) < \veps_1, \ \rho(x, x_2) < \veps_2$. Положим $\veps = \min\cbr{\frac{\veps_1}{2} - \rho(x_1, x), \frac{\veps_2}{2} - \rho(x_2, x)}$. Тогда: $\forall y \in O_{\veps}(x)$:
+    $\rho(x, x_1) < \veps_1, \ \rho(x, x_2) < \veps_2$. Положим $\veps = \min\cbr{\veps_1 - \rho(x_1, x), \veps_2 - \rho(x_2, x)}$. Тогда: $\forall y \in O_{\veps}(x)$:
     % todo: вставить картинку
     \[
-        \rho(y, x_1) \leq \rho(y, x) + \rho(x, x_1) = \veps + \rho(x, x_1) \leq \frac{\veps_1}{2} - \rho(x, x_1) + \rho(x, x_1) = \frac{\veps_1}{2} < \veps_1.
+        \rho(y, x_1) \leq \rho(y, x) + \rho(x, x_1) < \veps + \rho(x, x_1) \leq \veps_1 - \rho(x, x_1) + \rho(x, x_1) = \veps_1.
     \]
     Значит, $y \in O_{\veps_1}(x_1)$. Аналогично: $\rho(y, x_2) < \veps_2 \Rightarrow y \in O_{\veps_2}(x_2)$. Т.к. это верно $\forall y \in O_{\veps}(x)$, то: $O_{\veps}(x) \subset B_1 \cap B_2$, т.е. $B_3 \subset B_1 \cap B_2$.
     Т.о. по достаточному условию на базу топологии: открытые шары в метрическом пространстве образуют базу топологии, порождённой метрикой этого пространства.
